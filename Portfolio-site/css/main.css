@@ -28,6 +28,22 @@ body {
   position: relative;
 }
 
+.bg-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: -1;
+  opacity: 0.9;
+  overflow: hidden;
+}
+.bg-video__content {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 /* Header */
 
 .header {
@@ -38,7 +54,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: absolute;
+  position: relative;
   color: #ccc;
   /* background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
     url(../images/emile-perron-190221.jpg);
@@ -48,15 +64,20 @@ body {
 .header__title {
   font-size: 7rem;
   font-weight: 300;
-  transform: translateX(-50%);
   margin: 0;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #ccc;
+  animation: slideFadeIn 1s ease-in-out 0.5s forwards;
+  opacity: 0;
+  margin-top: -10rem;
 }
 
 .header__subtitle {
   font-size: 3.5rem;
   font-weight: 300;
-  transform: translateX(-50%);
   margin: 0;
+  animation: slideFadeIn 1s ease-in-out 0.5s forwards;
+  opacity: 0;
 }
 
 .header nav {
@@ -77,13 +98,19 @@ body {
 
 /* Navigation  */
 
-nav {
-}
-
 .nav__item {
   font-size: 2rem;
   padding: 1rem 2.5rem;
   color: #fff;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s;
+  opacity: 0.7;
+}
+
+.nav__item:hover {
+  border-bottom: 2px solid #7d97ad;
+  opacity: 1;
 }
 
 /* Main */
@@ -109,4 +136,19 @@ main {
 
 footer {
   margin-top: auto;
+  text-align: center;
+}
+
+footer nav ul {
+  display: flex;
+  justify-content: center;
+}
+
+/* Animations  */
+
+@keyframes slideFadeIn {
+  100% {
+    opacity: 1;
+    margin-top: 0;
+  }
 }
