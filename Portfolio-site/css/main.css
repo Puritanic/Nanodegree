@@ -5,6 +5,7 @@ html {
   box-sizing: border-box;
   font-family: 'Open Sans', sans-serif;
   font-size: 10px;
+  color: #777;
   flex-direction: column;
   width: 100%;
   height: 100%;
@@ -14,22 +15,29 @@ html > * {
   box-sizing: inherit;
 }
 
+a {
+  text-decoration: none;
+  color: teal;
+}
+
 li {
   list-style: none;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
   position: relative;
+  overflow-x: hidden;
+  background: #777;
 }
 
 .bg-video {
-  position: absolute;
+  /* https://stackoverflow.com/questions/22330108/html-video-with-css-position-fixed-and-background-attachment-fixed-on-chrome */
+  position: fixed;
+  -webkit-transform: translateZ(0);
   top: 0;
   left: 0;
   height: 100%;
@@ -44,11 +52,23 @@ body {
   object-fit: cover;
 }
 
+.logo {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.logo img {
+  width: 15rem;
+  height: auto;
+}
+
 /* Header */
 
 .header {
-  width: 100%;
+  /* width: 100%; */
   height: 100vh;
+  min-height: 100vh;
   max-width: 100%;
   display: flex;
   justify-content: center;
@@ -116,8 +136,9 @@ body {
 /* Main */
 
 main {
-  max-width: 100%;
-  /* overflow: hidden; */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 /* Hero */
 
@@ -132,15 +153,159 @@ main {
   background-size: cover;
 }
 
+.about {
+  padding: 5rem 7rem;
+  background: #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 75vh;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  padding: 1rem;
+  align-items: center;
+}
+
+.about__me {
+  font-size: 1.9rem;
+  padding: 0 5rem;
+  flex: 0 0 45%;
+}
+
+.skills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex: 0 0 50%;
+}
+
+.skills__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills__item img {
+  width: 160px;
+  height: auto;
+}
+
+.skills__item.skills__item--big img {
+  width: 250px;
+  height: auto;
+}
+
+.work {
+  display: flex;
+  padding: 5rem 7rem;
+  max-width: 100%;
+  /* height: 75vh; */
+  flex-direction: column;
+  align-items: center;
+  background: lightgray;
+  justify-content: space-between;
+}
+
+.work .work__showcase {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 5rem;
+  /* padding: 3rem; */
+  /* background: #000; */
+}
+
+.work__showcase__item {
+  /* border: 1px solid #000; */
+  flex-basis: 24%;
+  margin: 0;
+}
+
+.work__showcase__item img {
+  max-width: 100%;
+}
+
+.contact {
+  padding: 3rem 7rem;
+  max-width: 100%;
+  background: #ccc;
+  height: 70vh;
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+}
+
+.contact .heading {
+  width: 20%;
+  margin: 0 auto;
+}
+
+.contact__form {
+  width: 60%;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10rem auto;
+}
+
+.contact__form label {
+  margin-bottom: 1rem;
+}
+
+.contact__form textarea {
+  width: 50%;
+  height: 15rem;
+  background: #fcc;
+  border: none;
+  outline: none;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.contact__form input[type='submit'] {
+  border: none;
+  width: 15rem;
+  height: 6.5rem;
+  border-radius: 10rem;
+  font-family: inherit;
+  font-size: 1.8rem;
+  padding: 1.5rem 5rem;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.contact__form input:not([type='submit']) {
+  font-family: inherit;
+  width: 50%;
+  border: none;
+  background: #fcc;
+  /* width: 30%; */
+  height: 2rem;
+  outline: none;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
 /* footer */
 
 footer {
   margin-top: auto;
+  margin: 0;
+  padding: 2rem;
   text-align: center;
+  background: #000;
 }
 
 footer nav ul {
   display: flex;
+  margin: 0;
   justify-content: center;
 }
 
@@ -151,4 +316,20 @@ footer nav ul {
     opacity: 1;
     margin-top: 0;
   }
+}
+
+/* Typography */
+
+.heading {
+  font-size: 3.5rem;
+  border-bottom: 2px solid #000;
+  text-align: center;
+  padding: 1rem;
+}
+
+.heading h3 {
+  text-transform: uppercase;
+  margin: 0;
+  font-weight: 400;
+  padding-bottom: 0.5rem;
 }
