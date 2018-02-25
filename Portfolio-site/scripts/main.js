@@ -5,8 +5,9 @@ $(() => {
     element: document.getElementById('js-about'),
     handler() {
       $('.nav').toggleClass('nav--dark');
+      $('.logo').toggleClass('logo--small');
     },
-    offset: '20%'
+    offset: '5%'
   });
 
   // $('#js-features-scroll').on('click', () => {
