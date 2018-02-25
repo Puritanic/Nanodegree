@@ -115,19 +115,47 @@ body {
 
 /* Navigation  */
 
-.nav__item {
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav.nav--dark {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.nav.nav--dark > * {
+  padding: 1rem;
+}
+
+.nav.nav--dark + .nav__social {
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.nav__item,
+.nav__item a:link,
+.nav__item a:visited {
   font-size: 2rem;
-  padding: 1rem 2.5rem;
+  padding: 1rem 2rem;
   color: #fff;
   cursor: pointer;
   border-bottom: 2px solid transparent;
-  transition: all 0.3s;
-  opacity: 0.7;
+  transition: all 0.2s;
+  opacity: 0.9;
 }
 
 .nav__item:hover {
   border-bottom: 2px solid #7d97ad;
   opacity: 1;
+}
+
+.nav__social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Main */
@@ -336,4 +364,16 @@ footer nav ul {
   margin: 0;
   font-weight: 400;
   padding-bottom: 0.5rem;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+}
+
+.icon-gh {
+  color: aliceblue;
 }
