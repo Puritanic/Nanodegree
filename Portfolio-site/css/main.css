@@ -53,7 +53,8 @@ body {
 }
 
 .logo {
-  position: absolute;
+  position: fixed;
+  z-index: 11;
   left: 0;
   top: 0;
 }
@@ -76,6 +77,7 @@ body {
   flex-direction: column;
   position: relative;
   color: #ccc;
+  /* background-image: url(../images/placeholder_hero.jpg); */
   /* background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5)),
     url(../images/emile-perron-190221.jpg);
   background-size: cover; */
@@ -101,7 +103,7 @@ body {
 }
 
 .header nav {
-  position: absolute;
+  position: fixed;
   display: flex;
   top: 0;
   right: 0;
