@@ -118,10 +118,6 @@ body {
   margin: 0;
 }
 
-.header nav > * {
-  display: flex;
-}
-
 /* Navigation  */
 
 nav {
@@ -143,15 +139,6 @@ nav {
   color: white;
 }
 
-.nav.nav--dark > * {
-  padding: 1rem;
-}
-
-.nav.nav--dark + .nav__social {
-  background: rgba(169, 169, 169, 0.8);
-  color: white;
-}
-
 .nav__item,
 .nav__item a:link,
 .nav__item a:visited {
@@ -167,12 +154,6 @@ nav {
 .nav__item:hover {
   border-bottom: 2px solid #7d97ad;
   opacity: 1;
-}
-
-.nav__social {
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* Main */
