@@ -12,7 +12,7 @@ html {
   height: 100%;
 }
 
-html>* {
+html > * {
   box-sizing: inherit;
 }
 
@@ -56,7 +56,7 @@ body {
 
 .logo {
   position: fixed;
-  z-index: 11;
+  z-index: 1111;
   left: 0;
   top: 0;
 }
@@ -107,6 +107,7 @@ body {
 
 .header nav {
   position: fixed;
+  z-index: 999;
   display: flex;
   top: 0;
   right: 0;
@@ -117,7 +118,7 @@ body {
   margin: 0;
 }
 
-.header nav>* {
+.header nav > * {
   display: flex;
 }
 
@@ -133,6 +134,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  position: relative;
+  z-index: 999;
 }
 
 .nav.nav--dark {
@@ -140,11 +143,11 @@ nav {
   color: white;
 }
 
-.nav.nav--dark>* {
+.nav.nav--dark > * {
   padding: 1rem;
 }
 
-.nav.nav--dark+.nav__social {
+.nav.nav--dark + .nav__social {
   background: rgba(169, 169, 169, 0.8);
   color: white;
 }
@@ -235,7 +238,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: transform .5s;
+  transition: transform 0.5s;
 }
 
 .skills__item:hover {
@@ -267,6 +270,7 @@ main {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  align-content: center;
   justify-content: center;
   margin-top: 5rem;
   /* padding: 3rem; */
@@ -274,15 +278,27 @@ main {
 }
 
 .work__showcase__item {
-  /* border: 1px solid #000; */
   flex-basis: 24%;
   margin: 0;
   text-align: center;
-  margin: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+.project__description {
+  background: rgba(169, 169, 169, 0.8);
+  position: absolute;
+  display: block;
+  height: 100%;
+  width: 100%;
+  bottom: 0;
+  text-align: center;
+  font-size: 1.8rem;
+  color: aliceblue;
 }
 
 .work__showcase__item img {
-  max-width: 100%;
+  width: 100%;
+  height: auto;
 }
 
 .contact {
