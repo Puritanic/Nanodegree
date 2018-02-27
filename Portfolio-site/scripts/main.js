@@ -10,13 +10,6 @@ $(() => {
     offset: '5%'
   });
 
-  // $('#js-features-scroll').on('click', () => {
-  //   $('html, body').animate({ scrollTop: $('#features').offset().top }, 1000);
-  // });
-  // $('#js-plans-scroll').on('click', () => {
-  //   $('html, body').animate({ scrollTop: $('#plans').offset().top }, 1000);
-  // });
-
   /** *******  jQuery Smooth scrolling  ********* */
 
   // Select all links with hashes
@@ -59,42 +52,4 @@ $(() => {
         }
       }
     });
-
-  // const waypointFeatures = new Waypoint({
-  //   element: document.getElementsByClassName('js-wp-1')[0],
-  //   handler() {
-  //     $('.js-wp-1').addClass('animated fadeIn');
-  //   },
-  //   offset: '70%'
-  // });
-
-  // const waypointSteps = new Waypoint({
-  //   element: document.getElementsByClassName('js-wp-2')[0],
-  //   handler() {
-  //     $('.js-wp-2').addClass('animated fadeInUp');
-  //   },
-  //   offset: '60%'
-  // });
-
-  // const waypointCities = new Waypoint({
-  //   element: document.getElementsByClassName('js-wp-3')[0],
-  //   handler() {
-  //     $('.js-wp-3').addClass('animated fadeIn');
-  //   },
-  //   offset: '60%'
-  // });
-
-  // const waypointPlans = new Waypoint({
-  //   element: document.getElementsByClassName('js-wp-4')[0],
-  //   handler() {
-  //     $('.js-wp-4').addClass('animated pulse');
-  //   },
-  //   offset: '50%'
-  // });
-
-  // $('.nav__mobile-icon').on('click', e => {
-  //   e.preventDefault();
-  //   $('.nav__mobile-icon i').toggleClass('ion-navicon-round ion-close-round');
-  //   $('.nav__main').toggleClass('nav__mobile');
-  // });
 });
