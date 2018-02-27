@@ -10,6 +10,10 @@ $(() => {
     offset: '5%'
   });
 
+  $('.hamburger').on('click', () => {
+    $('.hamburger').toggleClass('is-active');
+  });
+
   /** *******  jQuery Smooth scrolling  ********* */
 
   // Select all links with hashes
