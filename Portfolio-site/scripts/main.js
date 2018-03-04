@@ -12,6 +12,7 @@ $(() => {
 
   $('.hamburger').on('click', () => {
     $('.hamburger').toggleClass('is-active');
+    $('.nav').toggleClass('nav--mobile');
   });
 
   /** *******  jQuery Smooth scrolling  ********* */
