@@ -333,6 +333,18 @@ main {
   }
 }
 
+@media screen and (max-width: 600px) {
+  .skills__item img {
+    width: 6rem;
+    height: auto;
+  }
+
+  .skills__item.skills__item--big img {
+    height: 9rem;
+    width: auto;
+  }
+}
+
 /*********  Work  **********/
 
 .work {
@@ -425,6 +437,18 @@ main {
   }
 }
 
+@media screen and (max-width: 600px) {
+  .work__showcase__item {
+    flex-basis: 50%;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .work__showcase__item {
+    flex-basis: 100%;
+  }
+}
+
 @media screen and (max-width: 800px) {
   .work {
     padding: 3rem 0 0 0;
@@ -505,7 +529,7 @@ main {
     margin: 0 auto;
   }
   .contact {
-    padding: 2rem 4rem 1rem 4rem;
+    padding: 3rem 4rem 1rem 4rem;
   }
   .contact__form {
     width: 90%;
