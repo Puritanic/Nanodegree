@@ -24,6 +24,17 @@ html {
   }
 }
 
+@media screen and (max-width: 600px) {
+  html {
+    font-size: 6px;
+  }
+}
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 5px;
+  }
+}
+
 html > * {
   box-sizing: inherit;
 }
@@ -71,6 +82,12 @@ body {
   z-index: 1111;
   left: 0;
   top: 0;
+}
+
+@media screen and (max-width: 500px) {
+  .logo {
+    margin-left: 10px;
+  }
 }
 
 .logo__img {
@@ -617,6 +634,8 @@ footer nav ul {
     display: inline-block;
     position: fixed;
     z-index: 1500;
+    top: 0.5rem;
+    right: -1.5rem;
   }
 }
 
@@ -636,6 +655,7 @@ footer nav ul {
   top: 50%;
   margin-top: -2px;
 }
+
 .hamburger-inner,
 .hamburger-inner::before,
 .hamburger-inner::after {
@@ -648,6 +668,7 @@ footer nav ul {
   transition-duration: 0.15s;
   transition-timing-function: ease;
 }
+
 .hamburger-inner::before,
 .hamburger-inner::after {
   content: '';
@@ -663,6 +684,7 @@ footer nav ul {
 .hamburger--slider .hamburger-inner {
   top: 2px;
 }
+
 .hamburger--slider .hamburger-inner::before {
   top: 10px;
   transition-property: transform, opacity;
@@ -682,4 +704,13 @@ footer nav ul {
 }
 .hamburger--slider.is-active .hamburger-inner::after {
   transform: translate3d(0, -20px, 0) rotate(-90deg);
+}
+
+@media screen and (max-width: 600px) {
+  .hamburger-inner,
+  .hamburger-inner::before,
+  .hamburger-inner::after {
+    width: 30px;
+    height: 3px;
+  }
 }
