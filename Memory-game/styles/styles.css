@@ -85,9 +85,9 @@ header > * {
   position: absolute;
 }
 
-.card:hover div.front {
+.card.active div.front {
   transform: rotateY(180deg);
 }
-.card:hover div.back {
+.card.active div.back {
   transform: rotateY(0);
 }
