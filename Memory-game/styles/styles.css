@@ -14,13 +14,14 @@ html {
 body {
   width: 100%;
   height: 100%;
-  overflow: hidden;
+  /* overflow: hidden; */
   margin: 0;
   padding: 0;
   position: relative;
   background-image: url('../images/javascript.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+  background-position: center center;
 }
 
 header {
@@ -38,13 +39,10 @@ header > * {
 }
 
 .grid {
-  display: grid;
+  width: 50%;
+  display: flex;
+  flex-wrap: wrap;
   padding: 25px;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-columns: repeat(4, 1fr);
-  justify-items: center;
-  grid-row-gap: 15px;
-  max-width: 40%;
   border: 1px solid #000;
   position: relative;
   top: 100px;
@@ -52,7 +50,44 @@ header > * {
 }
 
 .card {
-  background: #000000bf;
   width: 150px;
   height: 150px;
+  width: calc(100% / 4 - 10px);
+  margin: 5px;
+  position: relative;
+  display: block;
+}
+
+.card div {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  line-height: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s ease-out;
+}
+
+/*// ANIMATION STYLES //*/
+
+.card div.back {
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.card div.front {
+  position: absolute;
+}
+
+.card:hover div.front {
+  transform: rotateY(180deg);
+}
+.card:hover div.back {
+  transform: rotateY(0);
 }
