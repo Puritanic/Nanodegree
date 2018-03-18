@@ -1,4 +1,3 @@
-const cards = document.getElementsByClassName('card');
 const grid = document.getElementById('js-grid');
 const startBtn = document.getElementById('js-start');
 
@@ -6,11 +5,12 @@ const images = ['css3', 'gulp', 'node', 'postcss', 'react', 'redux', 'gulp', 'sa
 
 
 // cards are an Array like object, and we cant use forEach directly on them, but we can use Array prototype call
-Array.prototype.forEach.call(cards, card => {
-  card.addEventListener('click', ev => {
-    card.classList.add('active');
-  });
-});
+// useful snippet
+// Array.prototype.forEach.call(cards, card => {
+//   card.addEventListener('click', ev => {
+//     card.classList.add('active');
+//   });
+// });
 
 startBtn.addEventListener('click', startGame);
 
@@ -18,6 +18,7 @@ function generateGrid(src, grid) {
   src.map((image, index) => {
     var el = document.createElement('div');
     el.classList.add('card');
+    el.id = `${image}`;
     el.innerHTML = `
       <div class="front" style="background: #267df4">Hello</div>
       <div class="back" style="background: #4c8fea">
@@ -32,21 +33,21 @@ function generateGrid(src, grid) {
   })
 }
 
+// https://bost.ocks.org/mike/shuffle/
 function shuffle(array) {
-  var currentIndex = array.length,
-    temporaryValue, randomIndex;
+  var m = array.length,
+    t, i;
 
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
+  // While there remain elements to shuffle…
+  while (m) {
 
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
+    // Pick a remaining element…
+    i = Math.floor(Math.random() * m--);
 
     // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
+    t = array[m];
+    array[m] = array[i];
+    array[i] = t;
   }
 
   return array;
