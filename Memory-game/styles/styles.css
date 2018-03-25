@@ -43,7 +43,6 @@ header > * {
   display: flex;
   flex-wrap: wrap;
   padding: 25px;
-  border: 1px solid #000;
   position: relative;
   top: 100px;
   margin: 0 auto;

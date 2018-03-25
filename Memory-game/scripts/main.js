@@ -21,6 +21,8 @@ const images = [
 ];
 
 let cardsToMatch = [];
+let moveCounter = 0;
+let pairs = 8;
 
 // cards are an Array like object, and we cant use forEach directly on them, but we can use Array prototype call
 // useful snippet
@@ -55,23 +57,26 @@ function generateGrid(src, grid) {
 }
 
 function handleClick(e, el) {
-  console.log(e);
   if (cardsToMatch.length === 2) {
     cardsToMatch = [];
     resetClass(grid);
   }
 
   displayCard(el);
-  console.log(el.getAttribute('data-card'));
+  incrementMoves();
 
   if (cardsToMatch.length === 2) {
     checkMatch(cardsToMatch) ? matched(cardsToMatch) : null;
   }
 }
 
+function incrementMoves() {
+  moveCounter++;
+  document.getElementById('js-moves').textContent = `Moves: ${moveCounter}`;
+}
+
 function checkMatch(arr) {
   const [a, b] = arr;
-  console.log(a.data === b.data && !(a.id === b.id));
   return a.data === b.data && !(a.id === b.id);
 }
 
@@ -86,24 +91,20 @@ function displayCard(el) {
 
 function matched(arr, onClick) {
   const [a, b] = arr;
-  const first = document.getElementById(a.id);
-  const second = document.getElementById(b.id);
-  first.classList.remove('active');
-  second.classList.remove('active');
-  first.classList.add('matched');
-  second.classList.add('matched');
-  console.log(a, b);
+  document.getElementById(a.id).classList.add('matched');
+  document.getElementById(b.id).classList.add('matched');
+  document.getElementById(a.id).classList.remove('active');
+  document.getElementById(b.id).classList.remove('active');
+  pairs--;
+  console.log(a, b, pairs);
+  if (pairs < 1) {
+    console.log('CONGRATS YOU WON');
+    clearTimeout(t);
+  }
 }
 
 function resetClass(el) {
-  console.dir(el);
-  console.log(el.childNodes);
-  console.log(typeof el.childNodes);
   el.childNodes.forEach(el => el.classList.remove('active'));
-}
-
-function lockGrid(el) {
-  el.forEach.childNodes(card => card.classList.add('locked'));
 }
 
 // https://stackoverflow.com/a/2450976/7453363
@@ -128,7 +129,54 @@ function shuffle(array) {
 }
 
 function startGame() {
-  var shuffledCards = shuffle(images);
+  const shuffledCards = shuffle(images);
+  moveCounter = 0;
   grid.innerHTML = '';
   generateGrid(shuffledCards, grid);
+  timer();
+}
+
+function restartGame() {
+  h1.textContent = '00:00:00';
+  seconds = 0;
+  minutes = 0;
+  hours = 0;
+}
+
+// Timer functionality
+
+// <h1><time>00:00:00</time></h1>
+// <button id="start">start</button>
+// <button id="stop">stop</button>
+// <button id="clear">clear</button>
+
+let timerDisplay = document.getElementById('js-timer'),
+  seconds = 0,
+  minutes = 0,
+  hours = 0,
+  t;
+
+function add() {
+  seconds++;
+  if (seconds >= 60) {
+    seconds = 0;
+    minutes++;
+    if (minutes >= 60) {
+      minutes = 0;
+      hours++;
+    }
+  }
+
+  timerDisplay.textContent =
+    (hours ? (hours > 9 ? hours : '0' + hours) : '00') +
+    ':' +
+    (minutes ? (minutes > 9 ? minutes : '0' + minutes) : '00') +
+    ':' +
+    (seconds > 9 ? seconds : '0' + seconds);
+
+  timer();
+}
+
+function timer() {
+  t = setTimeout(add, 1000);
 }
