@@ -85,12 +85,14 @@ header > * {
 /*// ANIMATION STYLES //*/
 
 .card div.back {
+  background: #3c3f48;
   padding: 10px;
   transform: rotateY(180deg);
   backface-visibility: hidden;
 }
 
 .card div.front {
+  background: #545257;
   position: absolute;
 }
 
@@ -99,4 +101,9 @@ header > * {
 }
 .card.active div.back {
   transform: rotateY(0);
+}
+
+.card.matched div.back {
+  transform: rotateY(0);
+  background: #5a563d;
 }
