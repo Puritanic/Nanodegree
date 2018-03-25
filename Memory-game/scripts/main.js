@@ -1,6 +1,8 @@
 const grid = document.getElementById('js-grid');
 const startBtn = document.getElementById('js-start');
-
+const modal = document.getElementById('js-modal');
+const closeBtn = document.getElementById('js-close');
+const movesDisplay = document.getElementById('js-moves');
 const images = [
   'css3',
   'gulp',
@@ -19,7 +21,11 @@ const images = [
   'sass',
   'webpack'
 ];
-
+let timerDisplay = document.getElementById('js-timer');
+let seconds = 0;
+let minutes = 0;
+let hours = 0;
+let t;
 let cardsToMatch = [];
 let moveCounter = 0;
 let pairs = 8;
@@ -45,7 +51,9 @@ function generateGrid(src, grid) {
     el.id = `js-${image}-${index}`;
     el.setAttribute('data-card', image);
     el.innerHTML = `
-      <div class="front">Hello</div>
+      <div class="front">
+        <img src="./images/gordon.svg" alt="game card">
+      </div>
       <div class="back">
         <img src="./images/${image}.svg" alt="game card">
       </div>
@@ -72,7 +80,18 @@ function handleClick(e, el) {
 
 function incrementMoves() {
   moveCounter++;
-  document.getElementById('js-moves').textContent = `Moves: ${moveCounter}`;
+  movesDisplay.textContent = `Moves: ${moveCounter}`;
+  if (moveCounter > 40) {
+    document.getElementById('js-rating').innerHTML = `
+    <img class="rating__star" src="/images/star.svg" alt="rating">
+    <img class="rating__star" src="/images/star.svg" alt="rating">
+    `;
+  }
+  if (moveCounter > 50) {
+    document.getElementById('js-rating').innerHTML = `
+    <img class="rating__star" src="/images/star.svg" alt="rating">
+    `;
+  }
 }
 
 function checkMatch(arr) {
@@ -89,7 +108,7 @@ function displayCard(el) {
   cardsToMatch.push(card);
 }
 
-function matched(arr, onClick) {
+function matched(arr) {
   const [a, b] = arr;
   document.getElementById(a.id).classList.add('matched');
   document.getElementById(b.id).classList.add('matched');
@@ -97,10 +116,27 @@ function matched(arr, onClick) {
   document.getElementById(b.id).classList.remove('active');
   pairs--;
   console.log(a, b, pairs);
+
   if (pairs < 1) {
-    console.log('CONGRATS YOU WON');
-    clearTimeout(t);
+    victory();
   }
+}
+
+function victory() {
+  clearTimeout(t);
+
+  modal.classList.add('active');
+  modal.innerHTML = renderModal();
+
+  modal.addEventListener('click', function(event) {
+    if (event.target.id === 'js-close') {
+      modal.classList.remove('active');
+    } else if (event.target.id === 'js-restart') {
+      modal.classList.remove('active');
+
+      startGame();
+    }
+  });
 }
 
 function resetClass(el) {
@@ -110,7 +146,7 @@ function resetClass(el) {
 // https://stackoverflow.com/a/2450976/7453363
 // https://bost.ocks.org/mike/shuffle/
 function shuffle(array) {
-  var m = array.length,
+  let m = array.length,
     t,
     i;
 
@@ -129,29 +165,24 @@ function shuffle(array) {
 }
 
 function startGame() {
+  clearTimeout(t);
+
   const shuffledCards = shuffle(images);
   moveCounter = 0;
+  pairs = 8;
   grid.innerHTML = '';
-  generateGrid(shuffledCards, grid);
-  timer();
-
-  startBtn.textContent = 'Restart Game';
-}
-
-function restartGame() {
-  h1.textContent = '00:00:00';
+  movesDisplay.textContent = '0';
+  timerDisplay.textContent = '00:00:00';
   seconds = 0;
   minutes = 0;
   hours = 0;
+  startBtn.textContent = 'Restart Game';
+
+  generateGrid(shuffledCards, grid);
+  timer();
 }
 
 // Timer functionality
-
-let timerDisplay = document.getElementById('js-timer'),
-  seconds = 0,
-  minutes = 0,
-  hours = 0,
-  t;
 
 function add() {
   seconds++;
@@ -176,4 +207,25 @@ function add() {
 
 function timer() {
   t = setTimeout(add, 1000);
+}
+
+function renderModal() {
+  return `
+  <span id="js-close">&times;</span>
+  <h1>
+    <img class="star" src="images/star.svg" alt="star">
+    ${
+      moveCounter < 40
+        ? '<img class="star" style="margin-bottom: 15px;"  src="images/star.svg" alt="star">'
+        : ''
+    }
+    ${
+      moveCounter < 50
+        ? '<img class="star" src="images/star.svg" alt="star">'
+        : ''
+    }
+  </h1>
+  <h2>Your score: ${moveCounter} | Time: ${timerDisplay.textContent}</h2>
+  <button class="btn" id="js-restart">Start new game</button>
+  `;
 }

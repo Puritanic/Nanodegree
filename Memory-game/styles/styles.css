@@ -1,3 +1,5 @@
+/* General styles */
+
 html {
   box-sizing: border-box;
   width: 100%;
@@ -14,7 +16,6 @@ html {
 body {
   width: 100%;
   height: 100%;
-  /* overflow: hidden; */
   margin: 0;
   padding: 0;
   position: relative;
@@ -28,9 +29,16 @@ body {
   justify-content: center;
 }
 
+@media screen and (max-width: 600px) {
+  body {
+    justify-content: space-around;
+  }
+}
+
 header {
-  margin: 0 0 3rem 0;
+  margin: 0 0 1.5rem 0;
   padding: 2rem;
+  color: #f1db51;
 }
 
 header > * {
@@ -39,11 +47,47 @@ header > * {
   font-weight: 400;
 }
 
+header h1 {
+  font-size: 3.5rem;
+  color: aliceblue;
+  margin-bottom: 10px;
+}
+
+/* App styles */
+
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+}
+
+@media screen and (max-width: 900px) {
+  header {
+    margin: 0 0 1rem 0;
+    padding: 2rem;
+    color: #f1db51;
+  }
+
+  header h1 {
+    font-size: 2rem;
+    color: aliceblue;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  header {
+    margin: 0;
+    padding: 1rem;
+    color: #f1db51;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    color: aliceblue;
+    margin-bottom: 10px;
+  }
 }
 
 .grid {
@@ -59,6 +103,38 @@ header > * {
   margin: 5px;
   position: relative;
   display: block;
+  transition: all 0.25s ease-in;
+}
+
+@media screen and (max-width: 1200px) {
+  .grid {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .grid {
+    width: 95%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .grid {
+    width: 99%;
+  }
+  .card {
+    height: 130px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .card {
+    height: 90px;
+  }
+}
+
+.card:hover {
+  transform: scale(1.02);
 }
 
 .card div {
@@ -85,6 +161,13 @@ header > * {
   background-position: center center;
 }
 
+.front img {
+  max-width: 100%;
+  max-height: 100%;
+  background-size: contain;
+  background-position: center center;
+}
+
 /*// ANIMATION STYLES //*/
 
 .card div.back {
@@ -95,13 +178,21 @@ header > * {
 }
 
 .card div.front {
+  padding: 30px;
   background: #545257;
   position: absolute;
+}
+
+@media screen and (max-width: 700px) {
+  .card div.front {
+    padding: 10px;
+  }
 }
 
 .card.active div.front {
   transform: rotateY(180deg);
 }
+
 .card.active div.back {
   transform: rotateY(0);
 }
@@ -113,17 +204,68 @@ header > * {
 
 /* Modal styles */
 
-.modal {
+#js-modal {
+  display: none;
   width: 666px;
   height: 450px;
   background: #f0f8ffeb;
   position: absolute;
-  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
 }
 
-.modal.active {
+#js-modal.active {
   display: flex;
+}
+
+#js-close {
+  display: block;
+  position: relative;
+  top: -20px;
+  right: -315px;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+#js-close:hover {
+  transform: rotate(180deg);
+}
+
+.star {
+  width: 100px;
+  height: 100px;
+}
+
+.rating__star {
+  margin-top: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+@media screen and (max-width: 700px) {
+  .rating__star {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* Buttons */
+
+.btn {
+  min-width: 150px;
+  padding: 10px 20px;
+  margin-top: 15px;
+  border-radius: 5px;
+  border: none;
+  font: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  border: 3px solid transparent;
+}
+
+.btn:hover {
+  border: 3px solid #f1db51;
 }
