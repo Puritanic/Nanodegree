@@ -42,7 +42,7 @@ function generateGrid(src, grid) {
   src.map((image, index) => {
     var el = document.createElement('div');
     el.classList.add('card');
-    el.id = `${image}-${index}`;
+    el.id = `js-${image}-${index}`;
     el.setAttribute('data-card', image);
     el.innerHTML = `
       <div class="front">Hello</div>
@@ -134,6 +134,8 @@ function startGame() {
   grid.innerHTML = '';
   generateGrid(shuffledCards, grid);
   timer();
+
+  startBtn.textContent = 'Restart Game';
 }
 
 function restartGame() {
@@ -144,11 +146,6 @@ function restartGame() {
 }
 
 // Timer functionality
-
-// <h1><time>00:00:00</time></h1>
-// <button id="start">start</button>
-// <button id="stop">stop</button>
-// <button id="clear">clear</button>
 
 let timerDisplay = document.getElementById('js-timer'),
   seconds = 0,

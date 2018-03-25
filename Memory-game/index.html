@@ -10,15 +10,15 @@
 </head>
 
 <body>
-  <header>
-    <h1>Frontend Memory game</h1>
+  <header class="header">
+    <h1>Frontend Memory Game</h1>
     <button id="js-start">Start Game</button>
     <h2>
       <span id="js-timer">00:00:00</span> |
       <span id="js-moves">Moves: </span>
     </h2>
   </header>
-  <div class="grid" id="js-grid">
+  <section class="grid" id="js-grid">
     <div class="card">
       <div class="front">Hello</div>
     </div>
@@ -67,6 +67,11 @@
     <div class="card">
       <div class="front">Hello</div>
     </div>
+  </section>
+  <div class="modal">
+    <h1>Stars</h1>
+    <h2>Your score</h2>
+    <button>Start new game</button>
   </div>
   <script src="./scripts/main.js"></script>
 </body>
